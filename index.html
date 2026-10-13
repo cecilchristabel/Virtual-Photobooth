@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtual Photobooth</title>
+  <title>Photobooth Studio</title>
   
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,80 +14,105 @@
 </head>
 <body>
 
-  <!-- Transisi Tirai (Curtain Overlay) Motif Garis -->
+  <!-- Transisi Tirai (Curtain Overlay) -->
   <div id="curtainOverlay" class="curtain-overlay" aria-hidden="true">
     <div class="curtain-panel curtain-panel--left"></div>
     <div class="curtain-panel curtain-panel--right"></div>
   </div>
 
+  <!-- ===================================================================
+       1. LANDING PAGE VIEW
+       =================================================================== -->
   <main id="landingView" class="landing-view">
+    <!-- Navbar -->
     <nav class="landing-nav">
       <div class="landing-nav__brand">
-        <span class="logo-text">Virtual Photobooth</span>
+        <span class="logo-icon">🎞️</span>
+        <span class="logo-text">Photobooth Studio</span>
       </div>
       <div class="landing-nav__status">
         <span class="status-indicator status-indicator--vacant">● BOOTH VACANT</span>
       </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero__content">
-        <div class="hero__badge">✨ Virtual Photobooth</div>
-        <h1 class="hero__title">Step into the photo booth!</h1>
+        <div class="hero__badge">✨ Experience Vintage Online Photobooth </div>
+        <h1 class="hero__title">Step into the photo booth and capture your sweet moments!</h1>
         <p class="hero__subtitle">
-          Experience the thrill of a classic hand-drawn photo booth right in your browser. Snap three consecutive poses, apply aesthetic filters, and instantly print your photo strip.
-        </p>
+          Experience the thrill of a classic retro photo booth right in your browser. Snap three consecutive poses, apply aesthetic filters, and instantly print your favorite photo strip.
 
         <div class="hero__cta">
           <button id="enterBoothBtn" class="btn btn--cta">
+            <span class="btn-icon">🚪</span>
             <span>Enter the Photo Booth</span>
           </button>
         </div>
+
+        <ul class="hero__highlights">
+          <li>✓ No App Download Required</li>
+          <li>✓ 5+ Cool Vintage Filters</li>
+          <li>✓ Free Download of PNG Photo Strips</li>
+        </ul>
       </div>
 
-      <!-- Preview Graphical Booth Box (Inspired by Sketch) -->
+      <!-- Preview Graphical Booth Box -->
       <div class="hero__booth-graphic">
-        <div class="booth-sketch">
-          <div class="booth-sketch__top">
-            <span class="sign-text">⭐ PHOTO BOOTH ⭐</span>
+        <div class="booth-box">
+          <div class="booth-box__top">
+            <span class="neon-sign">PHOTOBOOTH</span>
           </div>
-          <div class="booth-sketch__body">
-            <div class="booth-sketch__panel">
-              <div class="camera-lens"></div>
-              <div class="smile-text">:) <br> SMILE</div>
-              <div class="photo-slot"></div>
+          <div class="booth-box__curtains">
+            <div class="mini-curtain left"></div>
+            <div class="mini-screen">
+              <div class="flash-demo">⚡</div>
+              <p>Click the button to step inside</p>
             </div>
-            <div class="booth-sketch__entrance">
-              <div class="striped-curtain"></div>
-              <div class="stool">
-                <div class="stool-seat"></div>
-                <div class="stool-leg"></div>
-                <div class="stool-base"></div>
-              </div>
-            </div>
+            <div class="mini-curtain right"></div>
+          </div>
+          <div class="booth-box__strip-sample">
+            <div class="sample-frame"></div>
+            <div class="sample-frame"></div>
+            <div class="sample-frame"></div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Features Section -->
     <section class="features">
+      <h2 class="features__title">Why Choose Photobooth Studio?</h2>
       <div class="features__grid">
         <div class="feature-card">
-          <h3>📷 Instant Camera</h3>
+          <div class="feature-card__icon">📷</div>
+          <h3>Instant Camera</h3>
           <p>Connect directly to your laptop or phone's camera with a clear viewfinder display.</p>
         </div>
-        <div class="feature-card">
-          <h3>🎨 Aesthetic Filters</h3>
-          <p>Choose from various photo styles: Monochrome B&W, Classic Sepia, Vintage Warm, and Cool Blue.</p>
-        </div>
+        <div class="feature-card__icon">🎨</div>
+        <h3>Aesthetic Filters</h3>
+        <p>Choose from various photo styles: Monochrome B&W, Classic Sepia, Vintage Warm, and Cool Blue.</p>
       </div>
     </section>
+
+    <footer class="landing-footer">
+      <p>Photobooth Studio Online &copy; Prototype Project Kapita Selekta Komputasi</p>
+    </footer>
   </main>
 
+  <!-- ===================================================================
+       2. BOOTH VIEW
+       =================================================================== -->
   <div id="boothView" class="kiosk is-hidden">
+
+    <!-- Header Bilik -->
     <header class="kiosk__header">
       <div class="kiosk__brand">
-        <h1 class="kiosk__title">Virtual Photobooth</h1>
+        <div class="booth-status-bar">
+          <span class="status-indicator status-indicator--inuse">🔴 BOOTH IN USE</span>
+          <span class="booth-number">Booth #01</span>
+        </div>
+        <h1 class="kiosk__title">Digital Photo Studio</h1>
       </div>
       <button id="exitBoothBtn" class="btn btn--ghost exit-btn">
         <span>🚪 Exit Booth</span>
@@ -94,14 +120,19 @@
     </header>
 
     <div class="kiosk__body">
+
+      <!-- Unit Kamera / Viewfinder -->
       <section class="camera" aria-label="Unit Kamera">
+        <div class="camera__sprockets camera__sprockets--top" aria-hidden="true"></div>
+
         <div class="camera__stage">
           <video id="video" class="camera__feed" autoplay playsinline muted></video>
           <canvas id="captureCanvas" class="is-hidden"></canvas>
 
           <div id="cameraMessage" class="camera__message">
             <div class="camera__message-content">
-              <p id="cameraMessageText">Camera is not active. Click below.</p>
+              <span class="camera__icon">📷</span>
+              <p id="cameraMessageText">Camera is not active. Click the button below to activate it.</p>
               <button id="startBtn" class="btn btn--primary">Activate Camera</button>
             </div>
           </div>
@@ -117,9 +148,13 @@
           </div>
         </div>
 
+        <div class="camera__sprockets camera__sprockets--bottom" aria-hidden="true"></div>
+
+        <!-- Kontrol Kamera -->
         <div class="camera__controls">
           <div class="control-group">
-            <div class="filters" role="group">
+            <label class="control-label">Pilih Filter Foto:</label>
+            <div class="filters" role="group" aria-label="Pilih filter foto">
               <button class="filter" data-filter="none" aria-pressed="true">Normal</button>
               <button class="filter" data-filter="bw">B&W</button>
               <button class="filter" data-filter="sepia">Sepia</button>
@@ -128,36 +163,50 @@
             </div>
           </div>
 
-          <button id="shutterBtn" class="shutter" disabled aria-label="Start Photo">
+          <!-- Tombol Shutter -->
+          <button id="shutterBtn" class="shutter" disabled aria-label="Start Photo (3 Sessions)">
             <span class="shutter__ring"></span>
           </button>
-          <p class="camera__hint" id="hint">Press the red button for 3 photos.</p>
+
+          <p class="camera__hint" id="hint">Press the red button to start the 3-session photo countdown.</p>
         </div>
       </section>
 
-      <section class="strip-section">
+      <!-- Preview Hasil Foto -->
+      <section class="strip-section" aria-label="Photo Strip Results">
+        <h2 class="section-title">Photo Strip Results</h2>
+
+        <!-- Pilihan Warna Frame -->
         <div class="color-picker-wrapper">
+          <label class="control-label">Frame Color:</label>
           <div class="color-picker" id="colorPicker">
-            <button class="color-btn is-active" data-color="#f8f7f3" style="background: #f8f7f3;"></button>
-            <button class="color-btn" data-color="#ffffff" style="background: #ffffff;"></button>
-            <button class="color-btn" data-color="#2b2b2b" style="background: #2b2b2b;"></button>
+            <button class="color-btn is-active" data-color="#fdf6ec" title="Classic Cream" style="background: #fdf6ec;"></button>
+            <button class="color-btn" data-color="#ffffff" title="Pure White" style="background: #ffffff;"></button>
+            <button class="color-btn" data-color="#1f1b24" title="Dark Charcoal" style="background: #1f1b24;"></button>
+            <button class="color-btn" data-color="#fce7f3" title="Pastel Pink" style="background: #fce7f3;"></button>
+            <button class="color-btn" data-color="#e0f2fe" title="Pastel Blue" style="background: #e0f2fe;"></button>
           </div>
         </div>
 
         <div class="strip__paper" id="stripPaper">
           <div class="strip__empty" id="stripEmpty">
             <div class="empty-icon">🖼️</div>
-            <p>Your photo strip results will appear here.</p>
+            <p>Your photo strip results will appear here after you finish taking photos.</p>
           </div>
           <canvas id="stripCanvas" class="strip__canvas is-hidden"></canvas>
         </div>
 
         <div class="strip__actions">
-          <button id="downloadBtn" class="btn btn--secondary" disabled>💾 Download</button>
-          <button id="retakeBtn" class="btn btn--ghost" disabled>🔄 Retake</button>
+          <button id="downloadBtn" class="btn btn--secondary" disabled>💾 Download Strip</button>
+          <button id="retakeBtn" class="btn btn--ghost" disabled>🔄 Retake Photos </button>
         </div>
       </section>
+
     </div>
+
+    <footer class="kiosk__footer">
+      <p>Photobooth Web App Studio &copy; Prototype Project Kapita Selekta Komputasi</p>
+    </footer>
   </div>
 
   <script src="script.js"></script>
