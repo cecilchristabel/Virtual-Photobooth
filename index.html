@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,10 +10,122 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .shot-slot { position: relative; transition: transform 0.2s; cursor: pointer; }
+    .shot-slot:hover { transform: scale(1.05); }
+    
+    .remove-shot-btn {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-red);
+      color: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 10;
+    }
+    .remove-shot-btn:hover { background: #f87171; }
+    .shot-slot.has-image .remove-shot-btn { display: flex; }
+    
+    .view-shot-btn {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-blue);
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: bold;
+      line-height: 1;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 10;
+    }
+    .view-shot-btn:hover { background: #7dd3fc; }
+    .shot-slot.has-image .view-shot-btn { display: flex; }
+
+    .camera__shots { flex-direction: row; justify-content: center; width: 100%; top: auto; bottom: 12px; right: auto; gap: 12px; z-index: 20;}
+    .shot-slot { width: 60px; height: 45px; }
+
+    /* Modal Styles */
+    .modal {
+      display: flex;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    .modal.is-hidden {
+      display: none !important;
+      opacity: 0;
+    }
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      animation: zoomIn 0.3s ease;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      border: 4px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .close-modal {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      color: var(--ink);
+      background: #fff;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0px var(--ink);
+      z-index: 10001;
+    }
+    .close-modal:hover {
+      background: var(--accent-red);
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Transisi Tirai (Curtain Overlay) Motif Garis -->
   <div id="curtainOverlay" class="curtain-overlay" aria-hidden="true">
     <div class="curtain-panel curtain-panel--left"></div>
     <div class="curtain-panel curtain-panel--right"></div>
@@ -44,7 +156,6 @@
         </div>
       </div>
 
-      <!-- Preview Graphical Booth Box (Inspired by Sketch) -->
       <div class="hero__booth-graphic">
         <div class="booth-sketch">
           <div class="booth-sketch__top">
@@ -94,7 +205,7 @@
     </header>
 
     <div class="kiosk__body">
-      <section class="camera" aria-label="Unit Kamera">
+      <section class="camera" aria-label="Camera Unit">
         <div class="camera__stage">
           <video id="video" class="camera__feed" autoplay playsinline muted></video>
           <canvas id="captureCanvas" class="is-hidden"></canvas>
@@ -109,11 +220,22 @@
           <div id="countdown" class="camera__countdown" aria-live="polite"></div>
           <div id="flash" class="camera__flash" aria-hidden="true"></div>
 
-          <!-- Indicator / Live Thumbnails -->
           <div class="camera__shots" id="shotIndicator">
-            <div class="shot-slot" data-shot="0"><span class="shot-number">1</span></div>
-            <div class="shot-slot" data-shot="1"><span class="shot-number">2</span></div>
-            <div class="shot-slot" data-shot="2"><span class="shot-number">3</span></div>
+            <div class="shot-slot" data-shot="0" title="Click to select">
+              <span class="shot-number">1</span>
+              <button class="view-shot-btn" aria-label="View photo 1">🔍</button>
+              <button class="remove-shot-btn" aria-label="Remove photo 1">×</button>
+            </div>
+            <div class="shot-slot" data-shot="1" title="Click to select">
+              <span class="shot-number">2</span>
+              <button class="view-shot-btn" aria-label="View photo 2">🔍</button>
+              <button class="remove-shot-btn" aria-label="Remove photo 2">×</button>
+            </div>
+            <div class="shot-slot" data-shot="2" title="Click to select">
+              <span class="shot-number">3</span>
+              <button class="view-shot-btn" aria-label="View photo 3">🔍</button>
+              <button class="remove-shot-btn" aria-label="Remove photo 3">×</button>
+            </div>
           </div>
         </div>
 
@@ -131,7 +253,15 @@
           <button id="shutterBtn" class="shutter" disabled aria-label="Start Photo">
             <span class="shutter__ring"></span>
           </button>
-          <p class="camera__hint" id="hint">Press the red button for 3 photos.</p>
+          <p class="camera__hint" id="hint">Press the red button to take a photo.</p>
+
+          <button id="buildStripBtn" class="btn btn--primary is-hidden" style="margin-top: 12px; margin-bottom: 12px; width: 100%;">Build Photo Strip</button>
+
+          <div class="upload-section" style="margin-top: 12px; padding-top: 16px; border-top: 2px dashed var(--ink-light); width: 100%; text-align: center;">
+            <p style="font-size: 0.85rem; font-weight: 600; margin: 0 0 10px;">Or use photos from gallery:</p>
+            <button id="uploadBtn" class="btn btn--secondary" style="width: 100%;">📁 Upload Photo(s)</button>
+            <input type="file" id="uploadInput" accept="image/*" multiple class="is-hidden">
+          </div>
         </div>
       </section>
 
@@ -154,9 +284,17 @@
 
         <div class="strip__actions">
           <button id="downloadBtn" class="btn btn--secondary" disabled>💾 Download</button>
-          <button id="retakeBtn" class="btn btn--ghost" disabled>🔄 Retake</button>
+          <button id="retakeBtn" class="btn btn--ghost" disabled>🔄 Retake All</button>
         </div>
       </section>
+    </div>
+  </div>
+
+  <!-- Modal for Photo Preview -->
+  <div id="photoModal" class="modal is-hidden">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModalBtn">&times;</span>
+      <img id="modalImage" src="" alt="Enlarged Photo">
     </div>
   </div>
 
