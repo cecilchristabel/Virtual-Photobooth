@@ -137,4 +137,4 @@ html, body {
 .strip__empty { text-align: center; color: var(--ink-light); }
 .empty-icon { font-size: 2.5rem; margin-bottom: 10px; }
 .strip__canvas { width: 100%; display: block; border: var(--line-thin); border-radius: 4px; }
-.strip__actions { display: flex; gap: 12px; margin-top: 20px; width: 100%; max-width: 270px; }
+.strip__actions { display: flex; gap: 12px; margin-top: 20px; width: 100%; max-width: 270px; }p
