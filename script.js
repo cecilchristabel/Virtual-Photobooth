@@ -24,7 +24,7 @@
   const boothView = document.getElementById("boothView");
   const curtainOverlay = document.getElementById("curtainOverlay");
 
-  const enterBoothBtn = document.getElementById("enterBoothBtn");
+  const enterBoothBtn = document.getElementById("landingStartBtn");
   const exitBoothBtn = document.getElementById("exitBoothBtn");
 
   const video = document.getElementById("video");
@@ -117,6 +117,7 @@
     await wait(900);
     landingView.classList.add("is-hidden");
     boothView.classList.remove("is-hidden");
+    document.body.classList.remove("on-landing");
     window.scrollTo({ top: 0, behavior: "instant" });
     curtainOverlay.classList.remove("is-closing");
     startCamera();
@@ -128,7 +129,9 @@
     await wait(900);
     boothView.classList.add("is-hidden");
     landingView.classList.remove("is-hidden");
+    document.body.classList.add("on-landing");
     window.scrollTo({ top: 0, behavior: "instant" });
+    window.dispatchEvent(new Event("scroll")); // sinkronkan state landing (nav, animasi)
     curtainOverlay.classList.remove("is-closing");
   }
 

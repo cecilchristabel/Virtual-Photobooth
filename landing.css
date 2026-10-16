@@ -1,58 +1,61 @@
-/* Custom Fonts */
 @font-face {
   font-family: 'ITC Blackadder';
   src: url('Aset/Blackadder ITC Std Regular.otf') format('opentype');
 }
-
 @font-face {
   font-family: 'PixelOperator';
   src: url('Aset/PixelOperator.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'CoalhandLuke';
   src: url('Aset/CoalhandLuke TRIAL.otf') format('opentype');
 }
-
 @font-face {
   font-family: 'Droid Serif';
   src: url('Aset/droid-serif.regular.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'Lavonia';
   src: url('Aset/EDLavonia-Regular.ttf') format('truetype');
 }
 
-/* Landing Page */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ============ LANDING PAGE (Paper Snap) ============ */
+html { scroll-behavior: smooth; }
+body.on-landing { background: #202020; }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body, html {
-  width: 100vw;
-  background-color: #202020;
-  overflow-x: hidden;
-  font-family: 'PixelOperator', sans-serif;
-}
-
-.hero-slide, .how-section, .review-section, .team-section {
+#landingView {
   position: relative;
-  width: 100vw;
+  width: 100%;
+  background-color: #202020;
+  font-family: 'PixelOperator', sans-serif;
+  overflow-x: hidden;
+}
+#landingView * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Tombol start: sekarang <button>, jadi reset style bawaan */
+#landingView .start-btn {
+  background: none; border: 0; padding: 0; font: inherit; color: inherit;
+}
+#landingView .start-btn:focus-visible { outline: 3px dashed #fff; outline-offset: 8px; }
+
+/* Efek "dilempar keluar" saat di-scroll (pakai class, bukan inline style) */
+#landingView.is-scrolled .group-left  { transform: translateX(-800px) rotate(-45deg); opacity: 0; }
+#landingView.is-scrolled .group-right { transform: translateX(800px) rotate(45deg); opacity: 0; }
+#landingView.is-scrolled .main-title  { opacity: 0; transform: translate(-50%, -50px); }
+#landingView.is-scrolled .start-btn   { opacity: 0; transform: translate(-50%, 50px); pointer-events: none; }
+
+#landingView .hero-slide,
+#landingView .how-section,
+#landingView .review-section,
+#landingView .team-section {
+  position: relative;
+  width: 100%;
   height: 100vh;
   background-color: #202020;
   display: flex;
   overflow: hidden;
 }
-
-/* Navigasi */
-.navbar {
+#landingView .navbar {
   position: fixed;
   top: 35px;
   left: 50px;
@@ -60,8 +63,7 @@ body, html {
   gap: 20px;
   z-index: 100;
 }
-
-.nav-link {
+#landingView .nav-link {
   color: #ffffff;
   text-decoration: none;
   font-family: 'PixelOperator', sans-serif;
@@ -69,21 +71,17 @@ body, html {
   letter-spacing: 0.8px;
   transition: all 0.2s ease;
 }
-
-.nav-link:hover, .nav-link.active {
+#landingView .nav-link:hover,
+#landingView .nav-link.active {
   color: #ffffff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
-
-/* Section 1: Home */
-.hero-slide {
+#landingView .hero-slide {
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
-/* Judul */
-.main-title {
+#landingView .main-title {
   position: absolute;
   top: 35%;                  
   left: 50%;                 
@@ -97,9 +95,7 @@ body, html {
   white-space: nowrap;
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
-/* Tombol Start */
-.start-btn {
+#landingView .start-btn {
   position: absolute;
   top: 70%;                 
   left: 50%;                 
@@ -111,14 +107,12 @@ body, html {
   cursor: pointer;
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
-.btn-img {
+#landingView .btn-img {
   width: 200px;             
   display: block;
   transition: filter 0.3s ease;
 }
-
-.btn-text {
+#landingView .btn-text {
   position: absolute;
   font-family: 'PixelOperator', sans-serif;
   font-size: 45px;          
@@ -126,22 +120,18 @@ body, html {
   letter-spacing: 1px;
   pointer-events: none;
 }
-
-.start-btn:hover {
+#landingView .start-btn:hover {
   transform: translateX(-50%) scale(1.08);
 }
-
-.start-btn:hover .btn-img {
+#landingView .start-btn:hover .btn-img {
   filter: brightness(1.6) drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
 }
-
-.start-btn:hover .btn-text {
+#landingView .start-btn:hover .btn-text {
   color: #ffffff;
   text-shadow: 0 0 10px #ffffff;
 }
-
-/* Aset Setting */
-.group-left, .group-right {
+#landingView .group-left,
+#landingView .group-right {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -150,53 +140,43 @@ body, html {
   pointer-events: none;
   transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
-.asset {
+#landingView .asset {
   position: absolute;
   height: auto;
   filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.4));
 }
-
-.asset-papan-film { width: 250px; top: 17%; left: 4%; transform: rotate(1deg); z-index: 3; }
-.asset-bintang-ungu { width: 462px; top: 4%; left: 13.5%; transform: rotate(-12deg); z-index: 2; }
-.asset-toak        { width: 250px; top: 35%; left: 9%; transform: rotate(-1deg); z-index: 4; }
-.asset-dor-oren    { width: 110px; top: 48%; left: 6%; z-index: 5; }
-.asset-bunga       { width: 140px; top: 60.5%; left: 16.5%; z-index: 5; }
-.asset-dadu        { width: 150px; top: 70%; left: 5%; z-index: 3; }
-.asset-kunci       { width: 63px;  top: 56%; left: 28%; transform: rotate(2deg); z-index: 4; }
-.asset-kancing     { width: 60px;  top: 80%; left: 17%; z-index: 4; }
-
-.asset-manik            { width: 80px;  top: 31%; right: 23.5%; z-index: 4; }
-.asset-disco            { width: 340px; top: 8%;  right: 2%; z-index: 3; }
-.asset-gummy            { width: 90px;  top: 40%; right: 5%; z-index: 4; }
-.asset-phone            { width: 220px; top: 44%; right: 18.2%; transform: rotate(10deg); z-index: 3; }
-.asset-perahu           { width: 320px; top: 48%; right: -3%; transform: rotate(8deg); z-index: 2; }
-.asset-bintang-warnawarni { width: 305px; top: 51%; right: 5%; transform: rotate(15deg); z-index: 1; }
-
-.throw-left .asset { animation: throwLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-.throw-right .asset { animation: throwRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-
+#landingView .asset-papan-film { width: 250px; top: 17%; left: 4%; transform: rotate(1deg); z-index: 3; }
+#landingView .asset-bintang-ungu { width: 462px; top: 4%; left: 13.5%; transform: rotate(-12deg); z-index: 2; }
+#landingView .asset-toak { width: 250px; top: 35%; left: 9%; transform: rotate(-1deg); z-index: 4; }
+#landingView .asset-dor-oren { width: 110px; top: 48%; left: 6%; z-index: 5; }
+#landingView .asset-bunga { width: 140px; top: 60.5%; left: 16.5%; z-index: 5; }
+#landingView .asset-dadu { width: 150px; top: 70%; left: 5%; z-index: 3; }
+#landingView .asset-kunci { width: 63px;  top: 56%; left: 28%; transform: rotate(2deg); z-index: 4; }
+#landingView .asset-kancing { width: 60px;  top: 80%; left: 17%; z-index: 4; }
+#landingView .asset-manik { width: 80px;  top: 31%; right: 23.5%; z-index: 4; }
+#landingView .asset-disco { width: 340px; top: 8%;  right: 2%; z-index: 3; }
+#landingView .asset-gummy { width: 90px;  top: 40%; right: 5%; z-index: 4; }
+#landingView .asset-phone { width: 220px; top: 44%; right: 18.2%; transform: rotate(10deg); z-index: 3; }
+#landingView .asset-perahu { width: 320px; top: 48%; right: -3%; transform: rotate(8deg); z-index: 2; }
+#landingView .asset-bintang-warnawarni { width: 305px; top: 51%; right: 5%; transform: rotate(15deg); z-index: 1; }
+#landingView .throw-left .asset { animation: throwLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+#landingView .throw-right .asset { animation: throwRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 @keyframes throwLeft {
   0% { opacity: 0; transform: translate(-600px, 100px) rotate(-90deg) scale(0.3); }
   100% { opacity: 1; }
 }
-
 @keyframes throwRight {
   0% { opacity: 0; transform: translate(600px, 100px) rotate(90deg) scale(0.3); }
   100% { opacity: 1; }
 }
-
-/* Section 2: How To Use */
-.how-section {
+#landingView .how-section {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding-top: 120px;
   margin-top: 0;
 }
-
-/* Judul */
-.sub-title-wrapper {
+#landingView .sub-title-wrapper {
   width: 100%;
   max-width: 1000px;
   margin-bottom: -20px;
@@ -205,41 +185,33 @@ body, html {
   align-items: center;
   z-index: 10;
 }
-
-.wavy-title-svg {
+#landingView .wavy-title-svg {
   width: 100%;
   height: 100%;
   overflow: visible;
 }
-
-.wavy-text {
+#landingView .wavy-text {
   font-family: 'CoalhandLuke', cursive;
   font-size: 62px;
   fill: #ffffff;               
 }
-
-/* Kertas Carousel */
-.paper-carousel-container {
-  width: 100vw;
+#landingView .paper-carousel-container {
+  width: 100%;
   overflow: hidden;
   padding: 10px 0;
   display: flex;
 }
-
-.paper-track {
+#landingView .paper-track {
   display: flex;
   flex-direction: row;
   gap: 30px;
   width: max-content;
   animation: scrollInfinite 22s linear infinite;
 }
-
-.paper-track:hover {
+#landingView .paper-track:hover {
   animation-play-state: paused;
 }
-
-/* Kertas How To */
-.paper-card {
+#landingView .paper-card {
   width: 310px;
   height: 380px;
   background-size: contain;
@@ -252,59 +224,47 @@ body, html {
   transition: transform 0.3s ease, filter 0.3s ease;
   cursor: pointer;
 }
-
-.paper-card:hover {
+#landingView .paper-card:hover {
   transform: translateY(-15px) scale(1.05);
   filter: drop-shadow(0 10px 15px rgba(255,255,255,0.2));
 }
-
-.paper-pink   { background-image: url('Aset/kertas pink.png'); }
-.paper-yellow { background-image: url('Aset/kertas kuning.png'); }
-.paper-green  { background-image: url('Aset/kertas hijau.png'); }
-.paper-blue   { background-image: url('Aset/kertas biru.png'); }
-
-/* Isi Kertas */
-.paper-content {
+#landingView .paper-pink { background-image: url('Aset/kertas pink.png'); }
+#landingView .paper-yellow { background-image: url('Aset/kertas kuning.png'); }
+#landingView .paper-green { background-image: url('Aset/kertas hijau.png'); }
+#landingView .paper-blue { background-image: url('Aset/kertas biru.png'); }
+#landingView .paper-content {
   text-align: center;
   color: #2b2b2b;
   font-family: 'PixelOperator', sans-serif;
 }
-
-.step-num {
+#landingView .step-num {
   font-size: 32px;
   font-weight: bold;
   display: block;
   margin-bottom: 2px;
   color: #111;
 }
-
-.paper-content h3 {
+#landingView .paper-content h3 {
   font-size: 24px;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-
-.paper-content p {
+#landingView .paper-content p {
   font-size: 16px;
   line-height: 1.25;
   color: #333;
 }
-
 @keyframes scrollInfinite {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
-/* Section 3: Reviews */
-.review-header {
+#landingView .review-header {
   position: absolute;
   left: 10%;
   top: 16%;
   z-index: 10;
 }
-
-/* Judul */
-.review-title {
+#landingView .review-title {
   font-family: 'CoalhandLuke', cursive;
   font-size: 70px;
   color: #ffffff;
@@ -312,8 +272,7 @@ body, html {
   font-weight: normal;
   text-shadow: 2px 2px 0px #000;
 }
-
-.asset-camera {
+#landingView .asset-camera {
   position: absolute;
   left: -50%;
   top: 130%;
@@ -324,9 +283,7 @@ body, html {
   filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.5));
   pointer-events: none;
 }
-
-/* Papan Review */
-.board-wrapper {
+#landingView .board-wrapper {
   position: absolute;
   top: 45%;
   right: 2%;
@@ -338,15 +295,13 @@ body, html {
   justify-content: center;
   z-index: 5;
 }
-
-.corkboard-img {
+#landingView .corkboard-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(6px 10px 20px rgba(0,0,0,0.6));
 }
-
-.notes-container {
+#landingView .notes-container {
   position: absolute;
   width: 80%;
   height: 75%;
@@ -354,8 +309,7 @@ body, html {
   align-items: center;
   justify-content: center;
 }
-
-.memo-card {
+#landingView .memo-card {
   position: absolute;
   width: 300px;
   height: 260px;
@@ -367,15 +321,13 @@ body, html {
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   pointer-events: none;
 }
-
-.memo-card.active {
+#landingView .memo-card.active {
   opacity: 1;
   transform: scale(1) rotate(-3deg);
   pointer-events: auto;
   z-index: 15;
 }
-
-.memo-pin {
+#landingView .memo-pin {
   position: absolute;
   top: -15px;
   right: 15px;
@@ -383,8 +335,7 @@ body, html {
   height: auto;
   filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
 }
-
-.memo-content {
+#landingView .memo-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -392,21 +343,17 @@ body, html {
   font-family: 'PixelOperator', sans-serif;
   color: #222;
 }
-
-.memo-text {
+#landingView .memo-text {
   font-size: 25px;
   line-height: 1.3;
 }
-
-.memo-author {
+#landingView .memo-author {
   font-size: 20px;
   font-weight: bold;
   text-align: right;
   color: #a34641;
 }
-
-/* Section 4: The Team */
-.team-title-box {
+#landingView .team-title-box {
   position: absolute;
   top: 17%;
   left: 10%;
@@ -416,16 +363,13 @@ body, html {
   text-align: center;
   z-index: 10;
 }
-
-/* Judul */
-.title-the {
+#landingView .title-the {
   font-family: 'CoalhandLuke', cursive;
   font-size: 65px;
   color: #ffffff;
   line-height: 0.8;
 }
-
-.title-snap {
+#landingView .title-snap {
   font-family: 'Droid Serif', serif;
   font-size: 110px;
   color: #ffffff;
@@ -434,8 +378,7 @@ body, html {
   line-height: 0.9;
   margin: -5px 0;
 }
-
-.title-club {
+#landingView .title-club {
   font-family: 'Lavonia', cursive;
   font-size: 100px;
   color: #ffffff;
@@ -443,9 +386,7 @@ body, html {
   -webkit-text-stroke: 2px #a34641;
   text-shadow: 2px 2px 0px #a34641;
 }
-
-/* Foto member */
-.member-card {
+#landingView .member-card {
   position: absolute;
   background: transparent;
   padding: 0;
@@ -453,50 +394,43 @@ body, html {
   box-shadow: none;
   z-index: 5;
 }
-
-.member-card img {
+#landingView .member-card img {
   width: 100%;
   height: auto;
   display: block;
 }
-
-.card-abel {
+#landingView .card-abel {
   width: 250px;
   top: 12%;
   left: 40%;
   transform: rotate(-3deg);
 }
-
-.card-felta {
+#landingView .card-felta {
   width: 250px;
   top: 12%;
   left: 60%;
   transform: rotate(2deg);
 }
-
-.card-dhiska {
+#landingView .card-dhiska {
   width: 250px;
   top: 12%;
   left: 80%;
   transform: rotate(-2deg);
 }
-
-.card-rosi {
+#landingView .card-rosi {
   width: 250px;
   top: 52%;
   left: 50%;
   transform: rotate(3deg);
 }
-
-.card-kafka {
+#landingView .card-kafka {
   width: 250px;
   top: 52%;
   left: 70%;
   transform: rotate(-4deg);
   z-index: 2;
 }
-
-.asset-cam1 {
+#landingView .asset-cam1 {
   position: absolute;
   top: 52%;
   left: 4%;
@@ -506,8 +440,7 @@ body, html {
   z-index: 6;
   filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.5));
 }
-
-.asset-cam2 {
+#landingView .asset-cam2 {
   position: absolute;
   top: 63%;
   left: 22%;
@@ -517,8 +450,7 @@ body, html {
   z-index: 7;
   filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.5));
 }
-
-.asset-stars {
+#landingView .asset-stars {
   position: absolute;
   top: 58%;
   right: -1%;
@@ -526,25 +458,21 @@ body, html {
   height: auto;
   z-index: 1;
 }
-
-/* Animasi */
-.pop-item {
+#landingView .pop-item {
   opacity: 0;
   transform: scale(0.3) translateY(40px);
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-.team-section.in-view .pop-item {
+#landingView .team-section.in-view .pop-item {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
-
-.team-section.in-view .delay-1 { transition-delay: 0.1s; }
-.team-section.in-view .delay-2 { transition-delay: 0.25s; }
-.team-section.in-view .delay-3 { transition-delay: 0.4s; }
-.team-section.in-view .delay-4 { transition-delay: 0.55s; }
-.team-section.in-view .delay-5 { transition-delay: 0.7s; }
-.team-section.in-view .delay-6 { transition-delay: 0.85s; }
-.team-section.in-view .delay-7 { transition-delay: 1.0s; }
-.team-section.in-view .delay-8 { transition-delay: 1.15s; }
-.team-section.in-view .delay-9 { transition-delay: 1.3s; }
+#landingView .team-section.in-view .delay-1 { transition-delay: 0.1s; }
+#landingView .team-section.in-view .delay-2 { transition-delay: 0.25s; }
+#landingView .team-section.in-view .delay-3 { transition-delay: 0.4s; }
+#landingView .team-section.in-view .delay-4 { transition-delay: 0.55s; }
+#landingView .team-section.in-view .delay-5 { transition-delay: 0.7s; }
+#landingView .team-section.in-view .delay-6 { transition-delay: 0.85s; }
+#landingView .team-section.in-view .delay-7 { transition-delay: 1.0s; }
+#landingView .team-section.in-view .delay-8 { transition-delay: 1.15s; }
+#landingView .team-section.in-view .delay-9 { transition-delay: 1.3s; }
