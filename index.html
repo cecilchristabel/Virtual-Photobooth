@@ -386,6 +386,16 @@
             </div>
           </div>
 
+          <!--Pilih Hitungan Mundur-->
+          <div class="control-group countdown-setting">
+            <label class="control-label" for="countdownSelect">Countdown per Photo:</label>
+            <select id="countdownSelect" class="control-select">
+              <option value="3" selected>3 seconds</option>
+              <option value="5">5 seconds</option>
+              <option value="10">10 seconds</option>
+            </select>
+          </div>
+
           <button id="shutterBtn" class="shutter" disabled aria-label="Start Photo">
             <span class="shutter__ring"></span>
           </button>
@@ -401,13 +411,36 @@
         </div>
       </section>
 
-      <section class="strip-section">
+      <!-- Pilihan Warna Frame -->
+      <section class="strip-section" aria-label="Photo Strip Results">
+        <h2 class="section-title">Photo Strip Results</h2>
         <div class="color-picker-wrapper">
+          <label class="control-label">Frame Color:</label>
           <div class="color-picker" id="colorPicker">
-            <button class="color-btn is-active" data-color="#f8f7f3" style="background: #f8f7f3;"></button>
-            <button class="color-btn" data-color="#ffffff" style="background: #ffffff;"></button>
-            <button class="color-btn" data-color="#2b2b2b" style="background: #2b2b2b;"></button>
+            <button type="button" class="color-btn is-active" data-color="#fdf6ec" title="Classic Cream" aria-label="Classic Cream" aria-pressed="true" style="background: #fdf6ec;"></button>
+            <button type="button" class="color-btn" data-color="#ffffff" title="Pure White" aria-label="Pure White" aria-pressed="false" style="background: #ffffff;"></button>
+            <button type="button" class="color-btn" data-color="#1f1b24" title="Dark Charcoal" aria-label="Dark Charcoal" aria-pressed="false" style="background: #1f1b24;"></button>
+            <button type="button" class="color-btn" data-color="#fce7f3" title="Pastel Pink" aria-label="Pastel Pink" aria-pressed="false" style="background: #fce7f3;"></button>
+            <button type="button" class="color-btn" data-color="#e0f2fe" title="Pastel Blue" aria-label="Pastel Blue" aria-pressed="false" style="background: #e0f2fe;"></button>
+            <label class="color-custom" title="Pilih warna frame sendiri">
+              <span class="visually-hidden">Custom Frame Color</span>
+              <input id="customFrameColor" type="color" value="#fdf6ec" aria-label="Custom Frame Color" />
+              <span class="color-custom__icon" aria-hidden="true">+</span>
+            </label>
           </div>
+        </div>
+
+        <!-- Teks dan opsi tanggal pada hasil strip -->
+        <div class="strip-settings">
+          <label class="control-label" for="stripCaption">Your Caption:</label>
+          <input id="stripCaption" class="strip-settings__input" type="text"
+                 value="PHOTOBOOTH STUDIO" maxlength="35"
+                 placeholder="e.g. Our Memories" autocomplete="off" />
+          <label class="strip-settings__checkbox">
+            <input id="showDate" type="checkbox" checked />
+            <span>Show date on photo strip</span>
+          </label>
+          <p class="strip-settings__hint"></p>
         </div>
 
         <div class="strip__paper" id="stripPaper">
