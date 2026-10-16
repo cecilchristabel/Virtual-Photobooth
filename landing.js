@@ -38,5 +38,4 @@
     }, 3500);
   }
 
-  // Tombol Start -> ditangani di script.js (tirai transisi -> photobooth)
 })();
