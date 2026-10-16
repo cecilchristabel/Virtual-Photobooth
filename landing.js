@@ -1,12 +1,13 @@
 (() => {
   "use strict";
 
+  // Inisialisasi & Elemen Landing Page
   const landingView = document.getElementById("landingView");
   const teamSection = document.getElementById("team");
   const navLinks = Array.from(landingView.querySelectorAll(".nav-link"));
   const memos = Array.from(landingView.querySelectorAll(".memo-card"));
 
-  // Scroll: efek aset "dilempar", nav aktif, animasi The Team
+  // Efek Animasi dan Scroll
   function onScroll() {
     if (landingView.classList.contains("is-hidden")) return; // sedang di photobooth
 
@@ -27,7 +28,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Carousel memo "Pinned by Snappers"
+  // Animasi Carousel
   if (memos.length) {
     let current = 0;
     setInterval(() => {
@@ -37,6 +38,4 @@
       memos[current].classList.add("active");
     }, 3500);
   }
-
-  // Tombol Start -> ditangani di script.js (tirai transisi -> photobooth)
 })();
