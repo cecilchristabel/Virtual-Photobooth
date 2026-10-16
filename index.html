@@ -1,92 +1,339 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtual Photobooth</title>
+  <title>Paper Snap - Virtual Photobooth</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <link rel="stylesheet" href="landing.css" />
+  <style>
+    .shot-slot { position: relative; transition: transform 0.2s; cursor: pointer; }
+    .shot-slot:hover { transform: scale(1.05); }
+    
+    .remove-shot-btn {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-red);
+      color: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 10;
+    }
+    .remove-shot-btn:hover { background: #f87171; }
+    .shot-slot.has-image .remove-shot-btn { display: flex; }
+    
+    .view-shot-btn {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-blue);
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: bold;
+      line-height: 1;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 10;
+    }
+    .view-shot-btn:hover { background: #7dd3fc; }
+    .shot-slot.has-image .view-shot-btn { display: flex; }
 
-  <!-- Transisi Tirai (Curtain Overlay) Motif Garis -->
+    .camera__shots { flex-direction: row; justify-content: center; width: 100%; top: auto; bottom: 12px; right: auto; gap: 12px; z-index: 20;}
+    .shot-slot { width: 60px; height: 45px; }
+
+    /* Modal Styles */
+    .modal {
+      display: flex;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    .modal.is-hidden {
+      display: none !important;
+      opacity: 0;
+    }
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      animation: zoomIn 0.3s ease;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      border: 4px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .close-modal {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      color: var(--ink);
+      background: #fff;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0px var(--ink);
+      z-index: 10001;
+    }
+    .close-modal:hover {
+      background: var(--accent-red);
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="on-landing">
+
   <div id="curtainOverlay" class="curtain-overlay" aria-hidden="true">
     <div class="curtain-panel curtain-panel--left"></div>
     <div class="curtain-panel curtain-panel--right"></div>
   </div>
 
-  <main id="landingView" class="landing-view">
-    <nav class="landing-nav">
-      <div class="landing-nav__brand">
-        <span class="logo-text">Virtual Photobooth</span>
-      </div>
-      <div class="landing-nav__status">
-        <span class="status-indicator status-indicator--vacant">● BOOTH VACANT</span>
-      </div>
+  <main id="landingView" class="landing">
+  <!-- NAVIGASI -->
+    <nav class="navbar">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#howtouse" class="nav-link">How To Use</a>
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="#team" class="nav-link">The Team</a>
     </nav>
-
-    <section class="hero">
-      <div class="hero__content">
-        <div class="hero__badge">✨ Virtual Photobooth</div>
-        <h1 class="hero__title">Step into the photo booth!</h1>
-        <p class="hero__subtitle">
-          Experience the thrill of a classic hand-drawn photo booth right in your browser. Snap three consecutive poses, apply aesthetic filters, and instantly print your photo strip.
-        </p>
-
-        <div class="hero__cta">
-          <button id="enterBoothBtn" class="btn btn--cta">
-            <span>Enter the Photo Booth</span>
-          </button>
-        </div>
+  
+    <!-- SECTION 1: HOME -->
+    <section id="home" class="hero-slide">
+      <h1 class="main-title">Paper Snap</h1>
+  
+      <button type="button" id="landingStartBtn" class="start-btn" aria-label="Start - masuk ke photobooth">
+        <img src="Aset/tombol start.png" alt="" class="btn-img">
+        <span class="btn-text">Start</span>
+      </button>
+  
+      <div class="group-left throw-left">
+        <img src="Aset/papan film.png" class="asset asset-papan-film" alt="Papan Film">
+        <img src="Aset/bintang 2.png" class="asset asset-bintang-ungu" alt="Bintang Ungu">
+        <img src="Aset/toak.png" class="asset asset-toak" alt="Toak">
+        <img src="Aset/dor oren.png" class="asset asset-dor-oren" alt="Dor Oren">
+        <img src="Aset/bunga.png" class="asset asset-bunga" alt="Bunga">
+        <img src="Aset/dadu.png" class="asset asset-dadu" alt="Dadu">
+        <img src="Aset/kunci.png" class="asset asset-kunci" alt="Kunci">
+        <img src="Aset/kancing.png" class="asset asset-kancing" alt="Kancing">
       </div>
-
-      <!-- Preview Graphical Booth Box (Inspired by Sketch) -->
-      <div class="hero__booth-graphic">
-        <div class="booth-sketch">
-          <div class="booth-sketch__top">
-            <span class="sign-text">⭐ PHOTO BOOTH ⭐</span>
-          </div>
-          <div class="booth-sketch__body">
-            <div class="booth-sketch__panel">
-              <div class="camera-lens"></div>
-              <div class="smile-text">:) <br> SMILE</div>
-              <div class="photo-slot"></div>
+  
+      <div class="group-right throw-right">
+        <img src="Aset/manik.png" class="asset asset-manik" alt="Manik Bunga">
+        <img src="Aset/disco ball.png" class="asset asset-disco" alt="Disco Ball">
+        <img src="Aset/gummy.png" class="asset asset-gummy" alt="Gummy Bear">
+        <img src="Aset/perahu.png" class="asset asset-perahu" alt="Perahu Kertas">
+        <img src="Aset/phone.png" class="asset asset-phone" alt="Phone">
+        <img src="Aset/bintang 1.png" class="asset asset-bintang-warnawarni" alt="Bintang Warna">
+      </div>
+    </section>
+  
+    <!-- SECTION 2: HOW TO USE -->
+    <section id="howtouse" class="how-section">
+      <div class="sub-title-wrapper">
+        <svg viewBox="0 0 1000 200" class="wavy-title-svg">
+          <path id="wavePath" d="M 30,160 C 250,20 750,20 970,160" fill="none" />
+          <text class="wavy-text">
+            <textPath href="#wavePath" startOffset="50%" text-anchor="middle">
+              From Blank Paper to Snap
+            </textPath>
+          </text>
+        </svg>
+      </div>
+  
+      <div class="paper-carousel-container">
+        <div class="paper-track">
+          <div class="paper-card paper-pink">
+            <div class="paper-content">
+              <span class="step-num">01</span>
+              <h3>Choose Frame</h3>
+              <p>Pick your favorite template.</p>
             </div>
-            <div class="booth-sketch__entrance">
-              <div class="striped-curtain"></div>
-              <div class="stool">
-                <div class="stool-seat"></div>
-                <div class="stool-leg"></div>
-                <div class="stool-base"></div>
-              </div>
+          </div>
+          <div class="paper-card paper-yellow">
+            <div class="paper-content">
+              <span class="step-num">02</span>
+              <h3>Pose & Snap</h3>
+              <p>Turn on camera and strike your pose!</p>
+            </div>
+          </div>
+          <div class="paper-card paper-green">
+            <div class="paper-content">
+              <span class="step-num">03</span>
+              <h3>Add Stickers</h3>
+              <p>Decorate photos with cool filters and stickers.</p>
+            </div>
+          </div>
+          <div class="paper-card paper-blue">
+            <div class="paper-content">
+              <span class="step-num">04</span>
+              <h3>Save & Share</h3>
+              <p>Download your photo strip & share it!</p>
+            </div>
+          </div>
+  
+          <div class="paper-card paper-pink">
+            <div class="paper-content">
+              <span class="step-num">01</span>
+              <h3>Choose Frame</h3>
+              <p>Pick your favorite template.</p>
+            </div>
+          </div>
+          <div class="paper-card paper-yellow">
+            <div class="paper-content">
+              <span class="step-num">02</span>
+              <h3>Pose & Snap</h3>
+              <p>Turn on camera and strike your pose!</p>
+            </div>
+          </div>
+          <div class="paper-card paper-green">
+            <div class="paper-content">
+              <span class="step-num">03</span>
+              <h3>Add Stickers</h3>
+              <p>Decorate photos with cool filters and stickers.</p>
+            </div>
+          </div>
+          <div class="paper-card paper-blue">
+            <div class="paper-content">
+              <span class="step-num">04</span>
+              <h3>Save & Share</h3>
+              <p>Download your photo strip & share it!</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="features">
-      <div class="features__grid">
-        <div class="feature-card">
-          <h3>📷 Instant Camera</h3>
-          <p>Connect directly to your laptop or phone's camera with a clear viewfinder display.</p>
-        </div>
-        <div class="feature-card">
-          <h3>🎨 Aesthetic Filters</h3>
-          <p>Choose from various photo styles: Monochrome B&W, Classic Sepia, Vintage Warm, and Cool Blue.</p>
+  
+    <!-- SECTION 3: REVIEWS -->
+    <section id="reviews" class="review-section">
+      <div class="review-header">
+        <h2 class="review-title">Pinned by<br>Snappers</h2>
+        <img src="Aset/pegang kamera.png" alt="Pegang Kamera" class="asset-camera">
+      </div>
+  
+      <div class="board-wrapper">
+        <img src="Aset/papan kayu.png" alt="Papan Kayu" class="corkboard-img">
+        <div class="notes-container">
+          <div class="memo-card memo-1 active">
+            <img src="Aset/pin merah.png" class="memo-pin" alt="Pin">
+            <div class="memo-content">
+              <p class="memo-text">"Aplikasi booth-nya seru bgt! Vibe photoboothnya berasa!"</p>
+              <span class="memo-author">- @Abel</span>
+            </div>
+          </div>
+          <div class="memo-card memo-2">
+            <img src="Aset/pin merah.png" class="memo-pin" alt="Pin">
+            <div class="memo-content">
+              <p class="memo-text">"Framenya lucu bgt, stiker-nya juga lengkap."</p>
+              <span class="memo-author">- @Dhiska</span>
+            </div>
+          </div>
+          <div class="memo-card memo-3">
+            <img src="Aset/pin merah.png" class="memo-pin" alt="Pin">
+            <div class="memo-content">
+              <p class="memo-text">"Langsung bisa di-download photostrip-nya! Keren bgt Paper Snap!"</p>
+              <span class="memo-author">- @Felta</span>
+            </div>
+          </div>
+          <div class="memo-card memo-4">
+            <img src="Aset/pin merah.png" class="memo-pin" alt="Pin">
+            <div class="memo-content">
+              <p class="memo-text">"Mantul Paper Snap!"</p>
+              <span class="memo-author">- @Rosi</span>
+            </div>
+          </div>
+          <div class="memo-card memo-5">
+            <img src="Aset/pin merah.png" class="memo-pin" alt="Pin">
+            <div class="memo-content">
+              <p class="memo-text">"Gokil bgt!"</p>
+              <span class="memo-author">- @Kafka</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  </main>
+  
+    <!-- SECTION 4: THE TEAM -->
+    <section id="team" class="team-section">
+      <div class="team-title-box pop-item delay-1">
+        <span class="title-the">The</span>
+        <h2 class="title-snap">SNAP</h2>
+        <span class="title-club">Club</span>
+      </div>
+  
+      <div class="member-card card-abel pop-item delay-2">
+        <img src="Aset/abel.png" alt="Abel" class="member-img">
+      </div>
+  
+      <div class="member-card card-felta pop-item delay-3">
+        <img src="Aset/felta.png" alt="Felta" class="member-img">
+      </div>
+  
+      <div class="member-card card-dhiska pop-item delay-4">
+        <img src="Aset/dhiska.png" alt="Dhiska" class="member-img">
+      </div>
+  
+      <div class="member-card card-rosi pop-item delay-5">
+        <img src="Aset/rosi.png" alt="Rosi" class="member-img">
+      </div>
+  
+      <div class="member-card card-kafka pop-item delay-6">
+        <img src="Aset/kafka.png" alt="Kafka" class="member-img">
+      </div>
+  
+      <img src="Aset/kamera 1.png" alt="Kamera 1" class="asset-cam1 pop-item delay-7">
+      <img src="Aset/kamera 2.png" alt="Kamera 2" class="asset-cam2 pop-item delay-8">
+      <img src="Aset/bintang 1.png" alt="Bintang 1" class="asset-stars pop-item delay-9">
+    </section>
+</main>
 
   <div id="boothView" class="kiosk is-hidden">
     <header class="kiosk__header">
       <div class="kiosk__brand">
-        <h1 class="kiosk__title">Virtual Photobooth</h1>
+        <h1 class="kiosk__title">Paper Snap</h1>
       </div>
       <button id="exitBoothBtn" class="btn btn--ghost exit-btn">
         <span>🚪 Exit Booth</span>
@@ -94,7 +341,7 @@
     </header>
 
     <div class="kiosk__body">
-      <section class="camera" aria-label="Unit Kamera">
+      <section class="camera" aria-label="Camera Unit">
         <div class="camera__stage">
           <video id="video" class="camera__feed" autoplay playsinline muted></video>
           <canvas id="captureCanvas" class="is-hidden"></canvas>
@@ -109,11 +356,22 @@
           <div id="countdown" class="camera__countdown" aria-live="polite"></div>
           <div id="flash" class="camera__flash" aria-hidden="true"></div>
 
-          <!-- Indicator / Live Thumbnails -->
           <div class="camera__shots" id="shotIndicator">
-            <div class="shot-slot" data-shot="0"><span class="shot-number">1</span></div>
-            <div class="shot-slot" data-shot="1"><span class="shot-number">2</span></div>
-            <div class="shot-slot" data-shot="2"><span class="shot-number">3</span></div>
+            <div class="shot-slot" data-shot="0" title="Click to select">
+              <span class="shot-number">1</span>
+              <button class="view-shot-btn" aria-label="View photo 1">🔍</button>
+              <button class="remove-shot-btn" aria-label="Remove photo 1">×</button>
+            </div>
+            <div class="shot-slot" data-shot="1" title="Click to select">
+              <span class="shot-number">2</span>
+              <button class="view-shot-btn" aria-label="View photo 2">🔍</button>
+              <button class="remove-shot-btn" aria-label="Remove photo 2">×</button>
+            </div>
+            <div class="shot-slot" data-shot="2" title="Click to select">
+              <span class="shot-number">3</span>
+              <button class="view-shot-btn" aria-label="View photo 3">🔍</button>
+              <button class="remove-shot-btn" aria-label="Remove photo 3">×</button>
+            </div>
           </div>
         </div>
 
@@ -131,7 +389,15 @@
           <button id="shutterBtn" class="shutter" disabled aria-label="Start Photo">
             <span class="shutter__ring"></span>
           </button>
-          <p class="camera__hint" id="hint">Press the red button for 3 photos.</p>
+          <p class="camera__hint" id="hint">Press the red button to take a photo.</p>
+
+          <button id="buildStripBtn" class="btn btn--primary is-hidden" style="margin-top: 12px; margin-bottom: 12px; width: 100%;">Build Photo Strip</button>
+
+          <div class="upload-section" style="margin-top: 12px; padding-top: 16px; border-top: 2px dashed var(--ink-light); width: 100%; text-align: center;">
+            <p style="font-size: 0.85rem; font-weight: 600; margin: 0 0 10px;">Or use photos from gallery:</p>
+            <button id="uploadBtn" class="btn btn--secondary" style="width: 100%;">📁 Upload Photo(s)</button>
+            <input type="file" id="uploadInput" accept="image/*" multiple class="is-hidden">
+          </div>
         </div>
       </section>
 
@@ -154,12 +420,21 @@
 
         <div class="strip__actions">
           <button id="downloadBtn" class="btn btn--secondary" disabled>💾 Download</button>
-          <button id="retakeBtn" class="btn btn--ghost" disabled>🔄 Retake</button>
+          <button id="retakeBtn" class="btn btn--ghost" disabled>🔄 Retake All</button>
         </div>
       </section>
     </div>
   </div>
 
+  <!-- Modal for Photo Preview -->
+  <div id="photoModal" class="modal is-hidden">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModalBtn">&times;</span>
+      <img id="modalImage" src="" alt="Enlarged Photo">
+    </div>
+  </div>
+
+  <script src="landing.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
