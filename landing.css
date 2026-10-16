@@ -19,7 +19,7 @@
   src: url('Aset/EDLavonia-Regular.ttf') format('truetype');
 }
 
-/* ============ LANDING PAGE (Paper Snap) ============ */
+/* Base Landing Page */
 html { scroll-behavior: smooth; }
 body.on-landing { background: #202020; }
 
@@ -32,13 +32,13 @@ body.on-landing { background: #202020; }
 }
 #landingView * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Tombol start: sekarang <button>, jadi reset style bawaan */
+/* Base Tombol Start */
 #landingView .start-btn {
   background: none; border: 0; padding: 0; font: inherit; color: inherit;
 }
 #landingView .start-btn:focus-visible { outline: 3px dashed #fff; outline-offset: 8px; }
 
-/* Efek "dilempar keluar" saat di-scroll (pakai class, bukan inline style) */
+/* Efek Animasi Aset Keluar Landing Page */
 #landingView.is-scrolled .group-left  { transform: translateX(-800px) rotate(-45deg); opacity: 0; }
 #landingView.is-scrolled .group-right { transform: translateX(800px) rotate(45deg); opacity: 0; }
 #landingView.is-scrolled .main-title  { opacity: 0; transform: translate(-50%, -50px); }
@@ -55,6 +55,8 @@ body.on-landing { background: #202020; }
   display: flex;
   overflow: hidden;
 }
+
+/* Menu Navigasi */
 #landingView .navbar {
   position: fixed;
   top: 35px;
@@ -81,6 +83,8 @@ body.on-landing { background: #202020; }
   align-items: center;
   justify-content: center;
 }
+
+/* Judul */
 #landingView .main-title {
   position: absolute;
   top: 35%;                  
@@ -95,6 +99,8 @@ body.on-landing { background: #202020; }
   white-space: nowrap;
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
+/* Tombol Start */
 #landingView .start-btn {
   position: absolute;
   top: 70%;                 
@@ -140,6 +146,8 @@ body.on-landing { background: #202020; }
   pointer-events: none;
   transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
+/* Objek Landing Page */
 #landingView .asset {
   position: absolute;
   height: auto;
@@ -159,6 +167,8 @@ body.on-landing { background: #202020; }
 #landingView .asset-phone { width: 220px; top: 44%; right: 18.2%; transform: rotate(10deg); z-index: 3; }
 #landingView .asset-perahu { width: 320px; top: 48%; right: -3%; transform: rotate(8deg); z-index: 2; }
 #landingView .asset-bintang-warnawarni { width: 305px; top: 51%; right: 5%; transform: rotate(15deg); z-index: 1; }
+
+/* Efek Animasi Aset Masuk saat ke Landing Page: Home */
 #landingView .throw-left .asset { animation: throwLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 #landingView .throw-right .asset { animation: throwRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 @keyframes throwLeft {
@@ -169,6 +179,8 @@ body.on-landing { background: #202020; }
   0% { opacity: 0; transform: translate(600px, 100px) rotate(90deg) scale(0.3); }
   100% { opacity: 1; }
 }
+
+/* Landing Page: How to Use */
 #landingView .how-section {
   flex-direction: column;
   align-items: center;
@@ -176,6 +188,8 @@ body.on-landing { background: #202020; }
   padding-top: 120px;
   margin-top: 0;
 }
+
+/* Judul */
 #landingView .sub-title-wrapper {
   width: 100%;
   max-width: 1000px;
@@ -195,6 +209,8 @@ body.on-landing { background: #202020; }
   font-size: 62px;
   fill: #ffffff;               
 }
+
+/* Base dan Animasi Paper Carousel */
 #landingView .paper-carousel-container {
   width: 100%;
   overflow: hidden;
@@ -228,6 +244,8 @@ body.on-landing { background: #202020; }
   transform: translateY(-15px) scale(1.05);
   filter: drop-shadow(0 10px 15px rgba(255,255,255,0.2));
 }
+
+/* Objek Kertas How to */
 #landingView .paper-pink { background-image: url('Aset/kertas pink.png'); }
 #landingView .paper-yellow { background-image: url('Aset/kertas kuning.png'); }
 #landingView .paper-green { background-image: url('Aset/kertas hijau.png'); }
@@ -258,12 +276,16 @@ body.on-landing { background: #202020; }
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* Landing Page: Reviews */
 #landingView .review-header {
   position: absolute;
   left: 10%;
   top: 16%;
   z-index: 10;
 }
+
+/* Judul */
 #landingView .review-title {
   font-family: 'CoalhandLuke', cursive;
   font-size: 70px;
@@ -272,6 +294,8 @@ body.on-landing { background: #202020; }
   font-weight: normal;
   text-shadow: 2px 2px 0px #000;
 }
+
+/* Objek */
 #landingView .asset-camera {
   position: absolute;
   left: -50%;
@@ -301,6 +325,8 @@ body.on-landing { background: #202020; }
   object-fit: contain;
   filter: drop-shadow(6px 10px 20px rgba(0,0,0,0.6));
 }
+
+/* Base Memo */
 #landingView .notes-container {
   position: absolute;
   width: 80%;
@@ -335,6 +361,8 @@ body.on-landing { background: #202020; }
   height: auto;
   filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
 }
+
+/* Isi Memo */
 #landingView .memo-content {
   display: flex;
   flex-direction: column;
@@ -353,6 +381,8 @@ body.on-landing { background: #202020; }
   text-align: right;
   color: #a34641;
 }
+
+/* Landing Page: The Team */
 #landingView .team-title-box {
   position: absolute;
   top: 17%;
@@ -363,6 +393,8 @@ body.on-landing { background: #202020; }
   text-align: center;
   z-index: 10;
 }
+
+/* Judul */
 #landingView .title-the {
   font-family: 'CoalhandLuke', cursive;
   font-size: 65px;
@@ -386,6 +418,8 @@ body.on-landing { background: #202020; }
   -webkit-text-stroke: 2px #a34641;
   text-shadow: 2px 2px 0px #a34641;
 }
+
+/* Foto Team */
 #landingView .member-card {
   position: absolute;
   background: transparent;
@@ -430,6 +464,8 @@ body.on-landing { background: #202020; }
   transform: rotate(-4deg);
   z-index: 2;
 }
+
+/* Objek */
 #landingView .asset-cam1 {
   position: absolute;
   top: 52%;
@@ -458,6 +494,8 @@ body.on-landing { background: #202020; }
   height: auto;
   z-index: 1;
 }
+
+/* Animasi */
 #landingView .pop-item {
   opacity: 0;
   transform: scale(0.3) translateY(40px);
