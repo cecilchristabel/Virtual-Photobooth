@@ -182,7 +182,7 @@ html, body {
 
 /* ===== 5. BUTTONS ===== */
 
-.btn { display: inline-flex; flex: 1; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border: var(--line-thick); border-radius: var(--radius-sketch); background: #fff; color: #2b2b2b; font: 700 0.9rem var(--font-ui); box-shadow: 3px 3px 0 #2b2b2b; cursor: pointer; transition: all 0.2s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border: var(--line-thick); border-radius: var(--radius-sketch); background: #fff; color: #2b2b2b; font: 700 0.9rem var(--font-ui); box-shadow: 3px 3px 0 #2b2b2b; cursor: pointer; transition: all 0.2s; }
 .btn:active:not(:disabled) { transform: translate(3px, 3px); box-shadow: none; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn--cta { flex: 0 1 auto; padding: 16px 32px; background: var(--accent-yellow); color: #202020; font-size: 1.1rem; box-shadow: 6px 6px 0 rgba(0,0,0,0.5); }
