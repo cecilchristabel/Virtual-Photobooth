@@ -185,3 +185,17 @@ Berikut beberapa file utama yang digunakan dalam pengembangan website:
 - Pengguna harus mengisi tiga slot foto untuk menghasilkan photostrip.
 - Pengolahan foto dilakukan menggunakan JavaScript pada browser. Pada kode yang tersedia, tidak terdapat fitur penyimpanan foto ke database atau server.
 - Hasil photostrip dapat disimpan langsung ke perangkat pengguna.
+
+## 7. Troubleshooting
+| No. | Kendala | Solusi |
+|---|---|---|
+| 1 | Kamera tidak dapat diakses | Pastikan browser telah diberikan izin untuk mengakses kamera dan tidak ada aplikasi lain yang mengganggu penggunaan kamera. |
+| 2 | Kamera tidak muncul saat membuka photobooth | Pastikan website dijalankan melalui localhost atau HTTPS. Klik tombol "Try Again" untuk mencoba mengaktifkan kamera kembali. |
+| 3 | Foto tidak dapat diambil | Pastikan kamera sudah aktif dan proses countdown atau pengambilan foto sebelumnya telah selesai. |
+| 4 | Filter foto tidak berubah | Pastikan filter yang diinginkan sudah dipilih dan tidak sedang berlangsung proses pengambilan foto. |
+| 5 | Foto yang diunggah tidak muncul | Pastikan file yang dipilih merupakan gambar yang dapat dibaca oleh browser, kemudian coba unggah kembali. |
+| 6 | Photostrip tidak muncul | Pastikan ketiga slot foto sudah terisi, kemudian buat photostrip menggunakan tombol yang tersedia. |
+| 7 | Warna frame atau caption tidak berubah | Pastikan photostrip sudah dibuat, kemudian ubah kembali warna frame atau caption untuk memperbarui hasilnya. |
+| 8 | Tombol Download tidak dapat digunakan | Pastikan ketiga foto telah tersedia dan hasil photostrip sudah ditampilkan. |
+| 9 | Gambar atau dekorasi website tidak muncul | Periksa apakah seluruh file gambar dan folder `Aset` berada pada lokasi yang sesuai dengan struktur proyek. |
+| 10 | Tampilan website kurang sesuai pada perangkat tertentu | Coba gunakan browser versi terbaru atau sesuaikan ukuran layar untuk mendapatkan tampilan yang lebih optimal. |
