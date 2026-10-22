@@ -187,15 +187,34 @@ Berikut beberapa file utama yang digunakan dalam pengembangan website:
 - Hasil photostrip dapat disimpan langsung ke perangkat pengguna.
 
 ## 7. Troubleshooting
-| No. | Kendala | Solusi |
-|---|---|---|
-| 1 | Kamera tidak dapat diakses | Pastikan browser telah diberikan izin untuk mengakses kamera dan tidak ada aplikasi lain yang mengganggu penggunaan kamera. |
-| 2 | Kamera tidak muncul saat membuka photobooth | Pastikan website dijalankan melalui localhost atau HTTPS. Klik tombol "Try Again" untuk mencoba mengaktifkan kamera kembali. |
-| 3 | Foto tidak dapat diambil | Pastikan kamera sudah aktif dan proses countdown atau pengambilan foto sebelumnya telah selesai. |
-| 4 | Filter foto tidak berubah | Pastikan filter yang diinginkan sudah dipilih dan tidak sedang berlangsung proses pengambilan foto. |
-| 5 | Foto yang diunggah tidak muncul | Pastikan file yang dipilih merupakan gambar yang dapat dibaca oleh browser, kemudian coba unggah kembali. |
-| 6 | Photostrip tidak muncul | Pastikan ketiga slot foto sudah terisi, kemudian buat photostrip menggunakan tombol yang tersedia. |
-| 7 | Warna frame atau caption tidak berubah | Pastikan photostrip sudah dibuat, kemudian ubah kembali warna frame atau caption untuk memperbarui hasilnya. |
-| 8 | Tombol Download tidak dapat digunakan | Pastikan ketiga foto telah tersedia dan hasil photostrip sudah ditampilkan. |
-| 9 | Gambar atau dekorasi website tidak muncul | Periksa apakah seluruh file gambar dan folder `Aset` berada pada lokasi yang sesuai dengan struktur proyek. |
-| 10 | Tampilan website kurang sesuai pada perangkat tertentu | Coba gunakan browser versi terbaru atau sesuaikan ukuran layar untuk mendapatkan tampilan yang lebih optimal. |
+Berikut ini menjelaskan beberapa kendala yang mungkin terjadi beserta dengan solusinya.
+
+1. Kamera Tidak Dapat Diakses
+Pastikan browser telah diberikan izin untuk mengakses kamera dan tidak ada aplikasi lain yang mengganggu penggunaan kamera.
+
+2. Kamera Tidak Muncul Saat Membuka Photobooth
+Pastikan website dijalankan melalui localhost atau HTTPS. Klik tombol "Try Again" untuk mencoba mengaktifkan kamera kembali.
+
+3. Foto Tidak Dapat Diambil
+Pastikan kamera sudah aktif dan proses countdown atau pengambilan foto sebelumnya telah selesai.
+
+4. Filter Foto Tidak Berubah
+Pastikan filter yang diinginkan sudah dipilih dan tidak sedang berlangsung proses pengambilan foto.
+
+5. Foto yang Diunggah Tidak Muncul
+Pastikan file yang dipilih merupakan gambar yang didukung browser, kemudian coba unggah kembali.
+
+6. Photostrip Tidak Muncul
+Pastikan ketiga slot foto sudah terisi, kemudian buat photostrip menggunakan tombol yang tersedia.
+
+7. Warna Frame atau Caption Tidak Berubah
+Pastikan photostrip sudah dibuat, kemudian ubah kembali warna frame atau caption untuk memperbarui hasilnya.
+
+8. Tombol Download Tidak Dapat Digunakan
+Pastikan ketiga foto telah tersedia dan hasil photostrip sudah ditampilkan sebelum melakukan pengunduhan.
+
+9. Gambar atau Dekorasi Website Tidak Muncul
+Periksa apakah seluruh file gambar dan folder Aset berada pada lokasi yang sesuai dengan struktur proyek.
+
+10. Tampilan Website Kurang Sesuai pada Perangkat Tertentu
+Gunakan browser versi terbaru dan sesuaikan ukuran layar untuk mendapatkan tampilan yang lebih optimal.
