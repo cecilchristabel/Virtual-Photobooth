@@ -1,22 +1,4 @@
-<div align="center">
-
-# 📸 Paper Snap
-
-### Photobooth virtual bergaya retro-scrapbook, langsung dari browser kamu
-
-*From blank paper to snap — ambil 3 foto, pilih frame, unduh photostrip. Selesai dalam hitungan detik.*
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![No Backend](https://img.shields.io/badge/backend-tanpa%20server-success)
-![Privacy](https://img.shields.io/badge/foto-tidak%20diunggah-blue)
-
-</div>
-
----
-
-## ✨ Tentang Paper Snap
+✨ Tentang Paper Snap
 
 **Paper Snap** adalah website photobooth yang mengubah kamera devicemu menjadi photobooth. Cukup buka, izinkan kamera, berpose, dan unduh hasilnya.
 
@@ -34,7 +16,7 @@ Dibuat oleh **Snap Club** dengan HTML, CSS, dan JavaScript murni. Seluruh proses
 
 ---
 
-## 🌟 Fitur
+🌟 Fitur
 
 ### 🏠 Landing Page
 | Bagian | Isi |
@@ -79,11 +61,11 @@ Filter bisa dipilih sebelum memotret **dan** diubah setelah foto diambil, karena
 
 ---
 
-## 🚀 Cara Menjalankan
+🚀 Cara Menjalankan
 
 Tidak perlu install apa pun. Pilih salah satu cara:
 
-**Opsi 1: VS Code (paling mudah)**
+**Opsi 1: VS Code**
 1. Buka folder proyek di VS Code.
 2. Install ekstensi **Live Server**.
 3. Klik kanan `index.html` → **Open with Live Server**.
@@ -104,7 +86,7 @@ npx serve .
 
 ---
 
-## 📖 Cara Memakai
+📖 Cara Memakai
 
 1. Klik **Start** di halaman utama.
 2. Klik **Activate Camera** dan izinkan akses kamera.
@@ -118,7 +100,7 @@ npx serve .
 
 ---
 
-## 🗂️ Struktur Proyek
+🗂️ Struktur Proyek
 
 ```
 paper-snap/
@@ -132,7 +114,7 @@ paper-snap/
 
 ---
 
-## 🧰 Teknologi
+🧰 Teknologi
 
 | Teknologi | Dipakai untuk |
 |---|---|
@@ -147,18 +129,14 @@ paper-snap/
 ---
 
 
-## 👥 Tim Snap Club
+👥 Tim Snap Club
 
 **Abel · Felta · Dhiska · Rosi · Kafka**
 
 ---
 
-## 📝 Catatan
+📝 Catatan
 
 - Tidak ada penyimpanan ke database atau server; foto hanya ada di memori browser sampai kamu mengunduhnya.
 
-<div align="center">
-
 **Selamat bergaya! 📸✨**
-
-</div>
