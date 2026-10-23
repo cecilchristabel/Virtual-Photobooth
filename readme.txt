@@ -1,220 +1,164 @@
-# SNAP CLUB - WEBSITE PHOTOBOOTH
+<div align="center">
 
-## 1. Deskripsi Website
-Snap Club merupakan website photobooth yang dibuat untuk memberikan pengalaman berfoto secara online melalui kamera perangkat pengguna.
-Website ini memungkinkan pengguna untuk mengambil foto, menggunakan berbagai filter, mengatur warna frame, dan mengunduh hasil foto dalam bentuk photostrip.
-Website ini dibuat menggunakan HTML, CSS, dan JavaScript dengan tampilan yang mengusung konsep retro dan scrapbook.
-Selain fitur pengambilan foto, website juga dilengkapi dengan berbagai animasi dan elemen interaktif agar lebih menarik saat digunakan.
+# 📸 Paper Snap
 
-## 2. Fitur-Fitur Website
+### Photobooth virtual bergaya retro-scrapbook, langsung dari browser kamu
 
-### A. Landing Page
+*From blank paper to snap — ambil 3 foto, pilih frame, unduh photostrip. Selesai dalam hitungan detik.*
 
-**1. Home Page**
-Merupakan halaman utama yang pertama kali ditampilkan ketika pengguna membuka website.
-Pada halaman ini terdapat judul website, berbagai elemen dekorasi, serta tombol Start untuk memulai photobooth.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![No Backend](https://img.shields.io/badge/backend-tanpa%20server-success)
+![Privacy](https://img.shields.io/badge/foto-tidak%20diunggah-blue)
 
-**2. Navigation Bar**
-Fitur navigasi yang memudahkan pengguna berpindah ke beberapa bagian landing page, yaitu Home, How to Use, Reviews, dan The Team.
+</div>
 
-**3. How to Use**
-Menampilkan informasi mengenai cara menggunakan website photobooth.
-Informasi ditampilkan melalui kartu berbentuk kertas yang bergerak secara otomatis menggunakan animasi carousel.
+---
 
-**4. Reviews**
-Menampilkan beberapa ulasan atau testimoni yang sudah disediakan pada website.
-Ulasan ditampilkan secara bergantian setiap 3,5 detik dengan desain menyerupai memo yang ditempelkan pada papan.
+## ✨ Tentang Paper Snap
 
-**5. The Team*
-Menampilkan foto anggota tim yang terlibat dalam pembuatan website Snap Club.
-Bagian ini juga dilengkapi dengan animasi ketika pengguna melakukan scroll ke halaman tersebut.
+**Paper Snap** adalah website photobooth yang mengubah kamera devicemu menjadi photobooth. Cukup buka, izinkan kamera, berpose, dan unduh hasilnya.
 
-**6. Animasi dan Transisi**
-Website memiliki berbagai animasi seperti pergerakan elemen dekorasi, efek hover pada tombol,
-animasi ketika melakukan scroll, serta transisi tirai ketika pengguna masuk atau keluar dari halaman photobooth.
+Dibuat oleh **Snap Club** dengan HTML, CSS, dan JavaScript murni. Seluruh proses foto berjalan **di browser kamu sendiri**, jadi foto tidak pernah dikirim ke server mana pun. 🔒
 
-### B. Fitur Utama Photobooth
+---
 
-**1. Akses Kamera (Camera Access)**
-Website dapat mengakses kamera perangkat pengguna secara langsung melalui browser.
-Pengguna perlu memberikan izin akses kamera sebelum melakukan pengambilan foto.
+## 🎞️ Flow aplikasi
 
-**2. Live Camera Preview**
-Menampilkan tampilan kamera secara langsung sehingga pengguna dapat melihat dan mengatur posisi sebelum mengambil foto.
-Tampilan kamera dibuat seperti cermin agar lebih mudah digunakan.
+```
+ Klik Start  →  Izinkan kamera  →  Pilih filter & countdown  →  Ambil 3 foto
+                                                                      ↓
+        Unduh PNG  ←  Atur frame, caption & tanggal  ←  Build Photo Strip
+```
 
-**3. Manual Capture**
-Pengguna dapat mengambil foto satu per satu menggunakan tombol shutter.
-Foto yang diambil akan dimasukkan ke dalam slot foto yang dipilih.
+---
 
-**4. Automatic Capture**
-Pengguna dapat mengambil tiga foto secara otomatis secara berurutan tanpa perlu menekan tombol shutter setiap kali mengambil foto.
+## 🌟 Fitur
 
-**5. Countdown Timer**
-Menyediakan fitur hitung mundur sebelum kamera mengambil foto.
-Durasi countdown dapat diatur oleh pengguna, dengan pengaturan awal selama 3 detik.
+### 🏠 Landing Page
+| Bagian | Isi |
+|---|---|
+| **Home** | Judul, dekorasi animasi, dan tombol **Start** |
+| **How To Use** | Kartu kertas warna-warni yang bergerak otomatis (carousel) |
+| **Reviews** | Memo di papan kayu, berganti otomatis tiap **3,5 detik** |
+| **The Team** | Foto anggota tim dengan animasi *pop-in* saat di-scroll |
+| **Transisi** | Efek **tirai panggung** saat masuk dan keluar photobooth |
 
-**6. Photo Filters**
-Pengguna dapat memilih beberapa filter untuk mengubah tampilan foto, yaitu:
-- Normal: Menampilkan foto dengan warna asli.
-- Black & White: Mengubah foto menjadi hitam putih.
-- Sepia: Memberikan efek warna kecokelatan.
-- Vintage: Memberikan nuansa warna retro atau klasik.
-- Cool: Memberikan efek warna yang lebih dingin.
-Filter dapat dipilih sebelum mengambil foto dan juga dapat diubah pada foto yang sudah diambil.
-Setiap slot foto dapat menggunakan filter yang berbeda.
+### 📷 Photobooth
+- **Live preview ala cermin**: tampilan kamera dibalik horizontal supaya natural.
+- **Countdown** 3 / 5 / 10 detik (default 3 detik) lengkap dengan efek suara.
+- **Flash putih + suara shutter** setiap kali foto diambil.
+- **3 slot foto**: klik slot untuk memilih, 🔍 untuk memperbesar, ✕ untuk menghapus satu foto.
+- **Upload dari galeri**: tidak punya kamera? Tetap bisa pakai foto dari perangkat (bisa pilih beberapa sekaligus).
+- **Retake All**: ulang seluruh sesi dengan sekali klik.
 
-**7. Photo Slots**
-Website menyediakan tiga slot foto untuk menampung hasil pengambilan gambar.
-Pengguna dapat memilih slot tertentu, melihat foto yang sudah diambil, dan mengganti foto pada slot tersebut.
+### 🎨 Filter (bisa beda di tiap slot!)
+| Filter | Efek |
+|---|---|
+| **Normal** | Warna asli |
+| **B&W** | Hitam putih |
+| **Sepia** | Cokelat hangat |
+| **Vintage** | Nuansa retro klasik |
+| **Cool Blue** | Tone dingin kebiruan |
 
-**8. Photo Preview**
-Pengguna dapat melihat hasil foto pada setiap slot dalam tampilan yang lebih besar melalui jendela preview atau modal.
+Filter bisa dipilih sebelum memotret **dan** diubah setelah foto diambil, karena foto asli disimpan terpisah dari hasil filter.
 
-**9. Remove Photo**
-Pengguna dapat menghapus foto tertentu dari slot tanpa harus menghapus seluruh hasil foto.
+### 🖼️ Photostrip
+- Tiga foto digabung menjadi **strip vertikal** seperti hasil mesin photobooth.
+- **Warna frame**: 5 pilihan preset (Cream, Putih, Charcoal, Pink, Biru Pastel) + **color picker bebas**.
+- **Caption custom** (maks. 35 karakter). Jika kosong, otomatis memakai `PHOTOBOOTH STUDIO`.
+- **Stempel tanggal** yang bisa diaktifkan/dimatikan (format Indonesia).
+- **Warna teks otomatis** menyesuaikan terang/gelapnya frame agar tetap terbaca.
+- **Download PNG** dengan nama file otomatis, misalnya `photobooth-2026-10-23-14-30-00.png`.
 
-**10. Retake Photo**
-Pengguna dapat mengulang sesi pengambilan foto dengan menghapus seluruh foto yang sebelumnya telah diambil.
+### 🛟 Pendukung
+- Layout **responsif** untuk desktop dan layar kecil.
+- **Penanganan error kamera**: pesan jelas + tombol *Try Again*.
+- Kamera **otomatis dimatikan** saat keluar dari photobooth.
 
-**11. Upload Photo**
-Selain menggunakan kamera, pengguna juga dapat mengunggah foto dari perangkat.
-Foto yang diunggah akan dimasukkan ke dalam slot dan dapat digunakan untuk membuat photostrip.
+---
 
-**12. Flash Effect dan Shutter Sound**
-Ketika proses pengambilan foto berlangsung, website menampilkan efek kilatan cahaya putih dan suara shutter.
-Countdown juga dilengkapi dengan efek suara sebagai penanda sebelum foto diambil.
+## 🚀 Cara Menjalankan
 
-### C. Fitur Pengeditan dan Hasil Foto
+Tidak perlu install apa pun. Pilih salah satu cara:
 
-**1. Photostrip Generator**
-Setelah tiga slot foto terisi, website dapat menggabungkan seluruh foto menjadi satu photostrip vertikal.
-Hasilnya menyerupai foto strip yang biasa diperoleh dari mesin photobooth.
+**Opsi 1: VS Code (paling mudah)**
+1. Buka folder proyek di VS Code.
+2. Install ekstensi **Live Server**.
+3. Klik kanan `index.html` → **Open with Live Server**.
 
-**2. Frame Color Customization**
-Pengguna dapat mengubah warna latar belakang atau frame photostrip menggunakan pilihan warna yang telah tersedia.
+**Opsi 2: Python**
+```bash
+cd folder-proyek
+python -m http.server 8000
+# buka http://localhost:8000
+```
 
-**3. Custom Frame Color**
-Selain menggunakan warna yang disediakan, pengguna dapat memilih warna frame sendiri melalui color picker.
+**Opsi 3: Node.js**
+```bash
+npx serve .
+```
 
-**4. Custom Caption**
-Pengguna dapat menambahkan tulisan atau caption pada bagian bawah photostrip.
-Apabila tidak diisi, website akan menggunakan tulisan default "PHOTOBOOTH STUDIO".
+> ⚠️ **Penting:** browser hanya mengizinkan akses kamera lewat **`localhost`** atau **HTTPS**. Jika `index.html` dibuka langsung dengan `file://`, kamera bisa gagal aktif.
 
-**5. Date Stamp**
-Pengguna dapat memilih untuk menampilkan atau menyembunyikan tanggal pada hasil photostrip.
-Tanggal akan ditampilkan di bagian bawah foto.
+---
 
-**6. Automatic Text Color Adjustment**
-Warna tulisan pada photostrip akan menyesuaikan dengan tingkat kecerahan warna frame yang dipilih.
-Tujuannya agar tulisan tetap terlihat jelas pada frame berwarna terang maupun gelap.
+## 📖 Cara Memakai
 
-**7. Photostrip Preview**
-Menampilkan hasil penggabungan tiga foto beserta warna frame, caption, dan tanggal sebelum pengguna mengunduhnya.
+1. Klik **Start** di halaman utama.
+2. Klik **Activate Camera** dan izinkan akses kamera.
+3. Pilih **filter** dan durasi **countdown**.
+4. Tekan tombol **shutter merah** untuk memotret. Ulangi sampai 3 slot terisi (atau pakai **Upload Photo(s)**).
+5. Klik **Build Photo Strip**.
+6. Atur **warna frame**, **caption**, dan **tanggal**.
+7. Klik **💾 Download** untuk menyimpan PNG.
 
-**8. Download Photo**
-Pengguna dapat mengunduh hasil photostrip ke perangkat dalam format PNG.
-Proses pengunduhan dilakukan langsung melalui browser.
+> 💡 **Tips:** Mau ganti satu foto saja? Klik slotnya, ambil ulang, atau ganti filternya tanpa mengulang semuanya.
 
-### D. Fitur Tambahan
+---
 
-**1. Responsive Layout**
-Tampilan website dibuat agar dapat menyesuaikan ukuran layar yang berbeda, seperti desktop, laptop, dan perangkat dengan layar lebih kecil.
+## 🗂️ Struktur Proyek
 
-**2. Camera Error Handling**
-Jika kamera tidak tersedia atau izin akses ditolak, website akan menampilkan pesan pemberitahuan.
-Pengguna juga dapat mencoba mengaktifkan kamera kembali.
+```
+paper-snap/
+├── index.html      # Struktur halaman: landing page + photobooth
+├── landing.css     # Gaya & animasi landing page, deklarasi font
+├── landing.js      # Navigasi scroll, animasi tim, rotasi review
+├── style.css       # Gaya photobooth: kamera, filter, frame, strip
+├── script.js       # Logika utama: kamera, capture, filter, strip, download
+└── Aset/           # Gambar dekorasi, foto tim, dan font
+```
 
-**3. Camera Management**
-Kamera akan dihentikan ketika pengguna keluar dari halaman photobooth.
-Hal ini dilakukan agar kamera tidak terus aktif saat sudah tidak digunakan.
+---
 
-**4. Interactive User Interface**
-Website dilengkapi dengan tombol interaktif, penanda filter yang sedang digunakan, penanda slot foto aktif, dan informasi proses pengambilan gambar untuk memudahkan pengguna.
+## 🧰 Teknologi
 
-## 3. Teknologi yang Digunakan
-Website Snap Club dibuat menggunakan beberapa teknologi berikut:
+| Teknologi | Dipakai untuk |
+|---|---|
+| **HTML5 / CSS3** | Struktur, layout responsif, animasi |
+| **JavaScript (Vanilla)** | Seluruh logika aplikasi |
+| **MediaDevices API** | Mengakses kamera lewat `getUserMedia()` |
+| **Canvas API** | Menangkap foto, menerapkan filter, menyusun photostrip |
+| **FileReader API** | Membaca foto yang diunggah |
+| **Web Audio API** | Suara countdown dan shutter |
+| **Google Fonts** | *Fraunces* dan *Space Grotesk* (butuh koneksi internet) |
 
-**1. HTML**
-Digunakan untuk menyusun struktur halaman website, seperti navigasi, tombol, kamera, pengaturan foto, dan tampilan photostrip.
+---
 
-**2. CSS**
-Digunakan untuk mengatur desain website, mulai dari warna, tata letak, font, animasi, hingga tampilan yang menyesuaikan ukuran layar.
 
-**3. JavaScript**
-Digunakan untuk menjalankan fitur-fitur interaktif, seperti mengaktifkan kamera, mengambil foto, memberikan filter, mengatur countdown, membuat photostrip, dan mengunduh hasil foto.
+## 👥 Tim Snap Club
 
-**4. MediaDevices API**
-Digunakan untuk mengakses kamera perangkat pengguna melalui fungsi `getUserMedia()`.
+**Abel · Felta · Dhiska · Rosi · Kafka**
 
-**5. Canvas API**
-Digunakan untuk menangkap gambar dari kamera, menerapkan filter, menggabungkan foto, menambahkan caption, dan menghasilkan photostrip.
+---
 
-**6. FileReader API**
-Digunakan untuk membaca foto yang diunggah pengguna dari perangkat.
+## 📝 Catatan
 
-**7. Web Audio API**
-Digunakan untuk menghasilkan efek suara countdown dan shutter ketika pengguna mengambil foto.
+- Tidak ada penyimpanan ke database atau server; foto hanya ada di memori browser sampai kamu mengunduhnya.
 
-## 4. Struktur File
-Berikut beberapa file utama yang digunakan dalam pengembangan website:
-- `landing.css`: Mengatur tampilan dan animasi pada landing page.
-- `landing.js`: Mengatur interaksi landing page, navigasi scroll, dan pergantian ulasan secara otomatis.
-- `style.css`: Mengatur tampilan halaman photobooth, kamera, tombol, filter, frame, dan hasil foto.
-- `script.js`: Menjalankan fungsi utama photobooth, seperti kamera, pengambilan foto, filter, upload, dan download.
-- `Aset/`: Berisi gambar dekorasi, foto anggota tim, font, dan aset visual lainnya yang digunakan pada website.
+<div align="center">
 
-## 5. Cara Menggunakan Website
-1. Buka website Snap Club melalui browser.
-2. Pada halaman utama, klik tombol Start untuk masuk ke photobooth.
-3. Berikan izin akses kamera apabila diminta oleh browser.
-4. Pilih filter foto yang ingin digunakan.
-5. Atur durasi countdown sesuai keinginan.
-6. Pilih mode pengambilan foto, yaitu manual atau otomatis.
-7. Ambil tiga foto menggunakan tombol shutter. Pengguna juga dapat mengunggah foto dari perangkat.
-8. Setelah tiga slot terisi, buat atau lihat hasil photostrip.
-9. Pilih warna frame dan tambahkan caption jika diperlukan.
-10. Tentukan apakah tanggal ingin ditampilkan pada photostrip.
-11. Periksa hasil foto melalui preview.
-12. Klik tombol Download untuk menyimpan photostrip dalam format PNG.
+**Selamat bergaya! 📸✨**
 
-## 6. Catatan Penggunaan
-- Pengguna perlu memberikan izin akses kamera untuk menggunakan fitur pengambilan foto.
-- Akses kamera melalui browser umumnya memerlukan HTTPS atau localhost.
-- Jika kamera tidak dapat digunakan, pengguna tetap dapat menggunakan fitur upload foto.
-- Pengguna harus mengisi tiga slot foto untuk menghasilkan photostrip.
-- Pengolahan foto dilakukan menggunakan JavaScript pada browser. Pada kode yang tersedia, tidak terdapat fitur penyimpanan foto ke database atau server.
-- Hasil photostrip dapat disimpan langsung ke perangkat pengguna.
-
-## 7. Troubleshooting
-Berikut ini menjelaskan beberapa kendala yang mungkin terjadi beserta dengan solusinya.
-
-1. Kamera Tidak Dapat Diakses
-Pastikan browser telah diberikan izin untuk mengakses kamera dan tidak ada aplikasi lain yang mengganggu penggunaan kamera.
-
-2. Kamera Tidak Muncul Saat Membuka Photobooth
-Pastikan website dijalankan melalui localhost atau HTTPS. Klik tombol "Try Again" untuk mencoba mengaktifkan kamera kembali.
-
-3. Foto Tidak Dapat Diambil
-Pastikan kamera sudah aktif dan proses countdown atau pengambilan foto sebelumnya telah selesai.
-
-4. Filter Foto Tidak Berubah
-Pastikan filter yang diinginkan sudah dipilih dan tidak sedang berlangsung proses pengambilan foto.
-
-5. Foto yang Diunggah Tidak Muncul
-Pastikan file yang dipilih merupakan gambar yang didukung browser, kemudian coba unggah kembali.
-
-6. Photostrip Tidak Muncul
-Pastikan ketiga slot foto sudah terisi, kemudian buat photostrip menggunakan tombol yang tersedia.
-
-7. Warna Frame atau Caption Tidak Berubah
-Pastikan photostrip sudah dibuat, kemudian ubah kembali warna frame atau caption untuk memperbarui hasilnya.
-
-8. Tombol Download Tidak Dapat Digunakan
-Pastikan ketiga foto telah tersedia dan hasil photostrip sudah ditampilkan sebelum melakukan pengunduhan.
-
-9. Gambar atau Dekorasi Website Tidak Muncul
-Periksa apakah seluruh file gambar dan folder Aset berada pada lokasi yang sesuai dengan struktur proyek.
-
-10. Tampilan Website Kurang Sesuai pada Perangkat Tertentu
-Gunakan browser versi terbaru dan sesuaikan ukuran layar untuk mendapatkan tampilan yang lebih optimal.
+</div>
